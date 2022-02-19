@@ -4,10 +4,29 @@
       <div class="row">
         <Sidebar />
         <div class="col-lg-9 content py-4 mb-2 mb-sm-0 pb-sm-5">
-          <h1 class="mb-2 text-start">Tienda</h1>
+          <h1 class="mb-2 text-start">
+            Tienda
+            <span
+              class="shop__categorySelected text-muted"
+              v-if="categorySelected"
+              >({{ categorySelected.name }})</span
+            >
+          </h1>
           <Breadcrumb />
+          <div class="row" v-if="loadingProducts">
+            <div
+              class="col-md-4 col-sm-6 mb-grid-gutter"
+              v-for="item in [1, 2, 3, 4, 5, 6]"
+              :key="item"
+            >
+              <PuSkeleton height="200px" />
+            </div>
+          </div>
           <div class="row">
             <ProductCard v-for="item in products" :key="item.id" :data="item" />
+            <div class="text-center" v-if="products.length === 0">
+              <p>No se encontraron productos</p>
+            </div>
           </div>
         </div>
       </div>
@@ -55,21 +74,16 @@ export default {
     products() {
       return this.$store.getters.allProducts;
     },
-    // loadingProducts() {
-    //   return this.$store.getters.loadingProducts;
-    // },
-    // filteredProducts() {
-    //   if (!this.filter) {
-    //     return this.products;
-    //   }
-    //   return this.products.filter(
-    //     (a) =>
-    //       a.title.toLowerCase().includes(this.filter.toLowerCase()) ||
-    //       a.description.toLowerCase().includes(this.filter.toLowerCase())
-    //   );
-    // },
+    loadingProducts() {
+      return this.$store.getters.loadingProducts;
+    },
+    categorySelected() {
+      return this.$store.getters.categorySelected;
+    },
   },
 };
 </script>
 <style lang="sass" scoped>
+.shop__categorySelected
+  font-size: .8rem
 </style>

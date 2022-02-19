@@ -16,23 +16,37 @@
       >
         <div class="widget mb-5">
           <h3 class="widget-title text-start">Buscar producto</h3>
-          <input type="text" class="form-control" />
+          <input type="text" class="form-control" v-model="search" />
         </div>
         <div class="widget mb-5">
           <h3 class="widget-title text-start">Categorias</h3>
-          <div
-            class="form-check mb-2 d-flex"
-            v-for="item in categories"
-            :key="item.id"
-          >
-            <input
-              class="form-check-input mx-3"
-              type="checkbox"
-              :id="item.id"
-            />
-            <label class="form-check-label text-nav text-start" for="adidas">{{
-              item.name
-            }}</label>
+
+          <div v-if="loadingCategories">
+            <div class="" v-for="item in [1, 2, 3, 4, 5, 6]" :key="item">
+              <PuSkeleton height="30px" />
+            </div>
+          </div>
+
+          <div v-else>
+            <div class="sidebar__btn form-check mb-2 d-flex">
+              <label
+                class="form-check-label text-nav text-start"
+                @click="handleSelectCategory(null)"
+                >Todas</label
+              >
+            </div>
+            <div
+              class="sidebar__btn form-check mb-2 d-flex"
+              v-for="item in categories"
+              :key="item.id"
+            >
+              <label
+                class="form-check-label text-nav text-start"
+                v-bind:class="[active === item.id && 'sidebar__btnActive']"
+                @click="handleSelectCategory(item)"
+                >{{ item.name }}</label
+              >
+            </div>
           </div>
         </div>
       </div>
@@ -43,6 +57,12 @@
 <script>
 export default {
   name: "Sidebar",
+  data() {
+    return {
+      search: "",
+      active: null,
+    };
+  },
   mounted() {
     this.handleGetCategories();
   },
@@ -50,13 +70,39 @@ export default {
     handleGetCategories() {
       this.$store.dispatch("getCategories");
     },
+    handleSelectCategory(category) {
+      this.$store.dispatch("selectCategory", category);
+      if (category) {
+        this.active = category.id;
+      } else {
+        this.active = null;
+      }
+    },
   },
   computed: {
     categories() {
       return this.$store.getters.allCategories;
     },
+    loadingCategories() {
+      return this.$store.getters.loadingCategories;
+    },
+    categorySelected() {
+      return this.$store.getters.categorySelected;
+    },
+  },
+  watch: {
+    search(newValue) {
+      console.log("search", newValue);
+      this.$store.dispatch("getFilterSearch", newValue);
+    },
   },
 };
 </script>
 <style lang="sass" scoped>
+.sidebar__btn label
+  cursor: pointer
+  &:hover
+    color: #493ef0 !important
+.sidebar__btnActive
+  color: #493ef0 !important
 </style>
