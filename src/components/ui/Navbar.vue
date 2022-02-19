@@ -50,7 +50,6 @@
             />
           </a>
           <div class="d-flex align-items-center order-lg-3 ms-lg-auto">
-            <input type="text" placeholder="Buscar" class="form-control" />
             <div class="border-start me-2" style="height: 30px"></div>
             <div class="navbar-tool me-2">
               <a

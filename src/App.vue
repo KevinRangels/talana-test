@@ -1,11 +1,11 @@
 <template>
-  <main id="app" class="is-sidebar">
-    <div class="page-wrapper">
+  <div id="app" class="is-sidebar">
+    <main class="page-wrapper">
       <Navbar />
       <router-view />
-    </div>
+    </main>
     <notifications group="app" position="bottom center" />
-  </main>
+  </div>
 </template>
 <script>
 import Navbar from "@/components/ui/Navbar.vue";

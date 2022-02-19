@@ -14,16 +14,16 @@
         <h3>{{ product.name }}</h3>
       </div>
       <hr />
-      <div class="row">
+      <div class="row mb-3">
         <div class="col-md-6">
           <img :src="product.photo" class="img-fluid" />
         </div>
         <div class="col-md-6">
-          <p>Codigo: {{ product.code }}</p>
-          <p>Precio: {{ product.price }}</p>
-          <div class="row mb-2">
+          <p><strong>Codigo:</strong> {{ product.code }}</p>
+          <p><strong>Precio:</strong> $ {{ product.price | currency }}</p>
+          <div class="row mb-3">
             <div class="col-6 d-flex align-items-center">
-              <p class="mb-0">Cantidad</p>
+              <p class="mb-0"><strong>Cantidad:</strong></p>
             </div>
             <div class="col-6">
               <input
@@ -35,7 +35,13 @@
               />
             </div>
           </div>
-          <p>Subtotal: $ {{ subTotal }}</p>
+          <p><strong>Subtotal:</strong> $ {{ subTotal | currency }}</p>
+          <button
+            class="btn btn-primary btn-sm"
+            @click="addProductToCart(product)"
+          >
+            Agregar al carro
+          </button>
         </div>
       </div>
       <h4>Descripcion</h4>
@@ -107,6 +113,21 @@ export default {
         }
       });
       this.closeModal();
+    },
+  },
+  filters: {
+    currency(number) {
+      let numberFormated = number;
+      numberFormated = numberFormated.toLocaleString("de-DE", {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+      });
+      return numberFormated;
+    },
+  },
+  watch: {
+    product() {
+      this.quantity = 1;
     },
   },
 };

@@ -75,7 +75,6 @@ export default {
   },
   data() {
     return {
-      favorive: false,
       quantity: 1,
     };
   },

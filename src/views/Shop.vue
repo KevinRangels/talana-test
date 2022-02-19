@@ -1,16 +1,26 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <Sidebar />
-      <div class="col-lg-9 content py-4 mb-2 mb-sm-0 pb-sm-5">
-        <h1 class="mb-2 text-start">Tienda</h1>
-        <Breadcrumb />
-        <div class="row">
-          <ProductCard v-for="item in products" :key="item.id" :data="item" />
+  <div class="sidebar-enabled">
+    <div class="container">
+      <div class="row">
+        <Sidebar />
+        <div class="col-lg-9 content py-4 mb-2 mb-sm-0 pb-sm-5">
+          <h1 class="mb-2 text-start">Tienda</h1>
+          <Breadcrumb />
+          <div class="row">
+            <ProductCard v-for="item in products" :key="item.id" :data="item" />
+          </div>
         </div>
       </div>
+      <ModalProductDetails />
+      <button
+        class="btn btn-primary btn-sm sidebar-toggle"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#shop-sidebar"
+      >
+        <i class="fas fa-filter fs-base me-2"></i>Filters
+      </button>
     </div>
-    <ModalProductDetails />
   </div>
 </template>
 
