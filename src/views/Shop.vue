@@ -10,6 +10,7 @@
         </div>
       </div>
     </div>
+    <ModalProductDetails />
   </div>
 </template>
 
@@ -17,6 +18,7 @@
 import Breadcrumb from "@/components/ui/Breadcrumb.vue";
 import Sidebar from "@/components/ui/Sidebar.vue";
 import ProductCard from "@/components/ui/ProductCard.vue";
+import ModalProductDetails from "@/components/ui/ModalProductDetails.vue";
 
 export default {
   name: "Shop",
@@ -24,6 +26,7 @@ export default {
     Sidebar,
     Breadcrumb,
     ProductCard,
+    ModalProductDetails,
   },
   data() {
     return {

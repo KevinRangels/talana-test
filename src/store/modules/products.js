@@ -15,10 +15,19 @@ export default {
         commit('SET_LOADING_PRODUCTS', false);
       } catch (error) {}
     },
+    getProductDetails({ commit }, product) {
+      try {
+        commit('SET_GET_PRODUCT', product);
+        commit('SET_MODAL_PRODUCT', true);
+      } catch (error) {}
+    },
   },
   mutations: {
     SET_GET_PRODUCTS(state, products) {
       state.products = products;
+    },
+    SET_GET_PRODUCT(state, product) {
+      state.product = product;
     },
     SET_LOADING_PRODUCTS(state, status) {
       state.loading = status;
@@ -27,6 +36,9 @@ export default {
   getters: {
     allProducts: (state) => {
       return state.products;
+    },
+    detailProduct: (state) => {
+      return state.product;
     },
     loadingProducts: (state) => {
       return state.loading;

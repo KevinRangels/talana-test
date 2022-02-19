@@ -59,7 +59,9 @@
                 data-bs-toggle="offcanvas"
                 data-bs-target="#shoppingCart"
                 ><i class="fas fa-shopping-cart"></i
-                ><span class="navbar-tool-badge">0</span></a
+                ><span class="navbar-tool-badge">{{
+                  shoppingCart.length
+                }}</span></a
               >
             </div>
           </div>
@@ -82,7 +84,7 @@
 </template>
 
 <script>
-import ShoppingCart from "@/components/ShoppingCart.vue";
+import ShoppingCart from "@/components/ShoppingCart/ShoppingCart.vue";
 
 export default {
   name: "Navbar",
@@ -90,9 +92,9 @@ export default {
     ShoppingCart,
   },
   computed: {
-    // shoppingCart() {
-    //   return this.$store.getters.shoppingCart;
-    // },
+    shoppingCart() {
+      return this.$store.getters.shoppingCart;
+    },
   },
   methods: {
     // goView(route) {
