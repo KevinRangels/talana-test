@@ -32,7 +32,7 @@
               <p>No se encontraron productos</p>
             </div>
           </div>
-          <div class="card-footer pb-0 pt-3">
+          <div class="card-footer pb-0 pt-3 mb-5">
             <jw-pagination
               :items="products"
               @changePage="onChangePage"
@@ -49,7 +49,7 @@
         data-bs-toggle="offcanvas"
         data-bs-target="#shop-sidebar"
       >
-        <i class="fas fa-filter fs-base me-2"></i>Filters
+        <i class="fas fa-filter fs-base me-2"></i>Filtros
       </button>
     </div>
   </div>

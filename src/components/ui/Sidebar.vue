@@ -16,10 +16,15 @@
       >
         <div class="widget mb-5">
           <h3 class="widget-title text-start">Buscar producto</h3>
-          <input type="text" class="form-control" v-model="search" />
+          <input
+            type="text"
+            class="form-control"
+            v-model="search"
+            placeholder="Nombre del producto"
+          />
         </div>
         <div class="widget mb-5">
-          <h3 class="widget-title text-start">Categorias</h3>
+          <h3 class="widget-title text-start">Categorías</h3>
 
           <div v-if="loadingCategories">
             <div class="" v-for="item in [1, 2, 3, 4, 5, 6]" :key="item">

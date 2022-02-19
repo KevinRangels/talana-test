@@ -89,5 +89,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="sass" scoped>
+.fa-trash
+  cursor: pointer
 </style>

@@ -38,7 +38,7 @@
               d-flex
               align-items-center
             "
-            @click="goView('/')"
+            @click="goToView()"
             ><img
               class="d-none d-lg-block mx-2 img-fluid"
               src="https://talana.com/static/www2/images/talana-logo.svg"
@@ -96,18 +96,9 @@ export default {
     },
   },
   methods: {
-    // goView(route) {
-    //   if (route === "/cart" && this.shoppingCart.length === 0) {
-    //     this.$notify({
-    //       group: "app",
-    //       type: "warn",
-    //       title: "Agregar productos",
-    //       text: "No tienes productos en tu carrito",
-    //     });
-    //     return;
-    //   }
-    //   this.$router.push(route);
-    // },
+    goToView() {
+      this.$router.push("/");
+    },
   },
 };
 </script>

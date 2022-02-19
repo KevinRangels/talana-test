@@ -33,7 +33,7 @@
             :max-rating="5.0"
             :increment="0.5"
             :star-size="16"
-            :v-model="3"
+            v-model="starsQuantity"
             :rounded-corners="true"
             :border-width="2"
             :active-color="activeStar"
@@ -125,6 +125,10 @@ export default {
     starInactive() {
       return "#D4D4D4";
     },
+    starsQuantity() {
+      let number = Math.random() * (5 - 1) + 1;
+      return number;
+    },
   },
   filters: {
     titleCut(text) {
@@ -146,18 +150,18 @@ export default {
 </script>
 <style lang="sass" scoped>
 .card-img-top img
-    max-height: 250px
-    min-height: 250px
-    padding: 30px
+  max-height: 250px
+  min-height: 250px
+  padding: 30px
 .fa-shopping-cart
-    cursor: pointer
+  cursor: pointer
 .favorie__active
-    color: red
+  color: red
 .fa-heart
-    cursor: pointer
+  cursor: pointer
 .productCard__input
-    width: 50px
-    height: 40px
-    padding: 0
-    padding-left: 20px
+  width: 50px
+  height: 40px
+  padding: 0
+  padding-left: 20px
 </style>

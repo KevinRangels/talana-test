@@ -7,6 +7,7 @@
         type="button"
         data-bs-dismiss="offcanvas"
         aria-label="Close"
+        id="shoppingCart__btnClose"
       ></button>
     </div>
     <div class="offcanvas-body p-4" data-simplebar>
@@ -16,11 +17,14 @@
         :data="item"
       />
     </div>
+    <div class="d-flex justify-content-center" v-if="shoppingCart.length === 0">
+      <p>No tienes productos en tu carrito</p>
+    </div>
     <div class="offcanvas-footer d-block border-top px-4 mb-2">
       <div class="d-flex justify-content-between mb-4">
         <span>Total:</span><span class="h6 mb-0">$ {{ total | currency }}</span>
       </div>
-      <a class="btn btn-primary btn-sm d-block w-100" href="checkout.html"
+      <a class="btn btn-primary btn-sm d-block w-100" @click="goToCheckout()"
         ><i class="fas fa-credit-card fs-base me-2"></i>Checkout</a
       >
     </div>
@@ -46,6 +50,21 @@ export default {
       return totalAmount;
     },
   },
+  methods: {
+    goToCheckout() {
+      if (this.shoppingCart.length === 0) {
+        this.$notify({
+          group: "app",
+          type: "warn",
+          title: "Agrega productos",
+          text: "No tienes productos en el carrito",
+        });
+        return;
+      }
+      document.getElementById("shoppingCart__btnClose").click();
+      this.$router.push("/checkout");
+    },
+  },
   filters: {
     titleCut(text) {
       if (text && text.length > 20) {
@@ -66,4 +85,7 @@ export default {
 </script>
 
 <style>
+#shoppingCart .simplebar-mask {
+  display: none;
+}
 </style>

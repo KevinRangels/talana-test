@@ -9,7 +9,7 @@
     content-class="modalContent"
     body-class="modalBody"
   >
-    <div>
+    <div v-if="product">
       <div class="modalProduct__header">
         <h3>{{ product.name }}</h3>
       </div>
@@ -44,13 +44,15 @@
           </button>
         </div>
       </div>
-      <h4>Descripcion</h4>
+      <h4>Descripción</h4>
       <p>
         {{ product.description }}
       </p>
       <div class="row">
         <div class="d-flex justify-content-between align-items-center">
-          <a @click="closeModal()" class="d-block">Seguir comprando</a>
+          <a @click="closeModal()" class="d-block modalProduct__keep"
+            >Seguir comprando</a
+          >
           <button class="btn btn-primary" @click="addProductToCart(product)">
             Agregar al carro
           </button>
@@ -148,5 +150,8 @@ export default {
   box-shadow: 0px 3px 6px #00000029;
   border-radius: 8px;
   width: 100%;
+}
+.modalProduct__keep {
+  cursor: pointer;
 }
 </style>
