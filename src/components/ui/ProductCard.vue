@@ -1,19 +1,23 @@
 <template>
   <div class="col-md-4 col-sm-6 mb-grid-gutter">
     <div class="card card-product card-hover">
-      <span class="badge badge-floating badge-pill bg-success">New</span>
+      <span
+        class="badge badge-floating badge-pill bg-success"
+        v-if="data.stock > 0"
+        >Disponible</span
+      >
+      <span class="badge badge-floating badge-pill bg-danger" v-else
+        >Sin Stock</span
+      >
       <a class="card-img-top" href="#">
-        <img
-          src="http://sva.talana.com:8000/media/fatcat.png"
-          alt="Product thumbnail"
-        />
+        <img :src="data.photo" alt="Product thumbnail" />
       </a>
       <div class="card-body">
-        <a class="meta-link fs-xs mb-1" href="#">test</a>
+        <a class="meta-link fs-xs mb-1" href="#">{{ data.category.name }}</a>
         <h3 class="fs-md fw-medium mb-2">
-          <a class="meta-link" href="#">test</a>
+          <a class="meta-link" href="#">{{ data.name | titleCut }}</a>
         </h3>
-        <span class="text-heading fw-semibold">test</span>
+        <span class="text-heading fw-semibold">$ {{ data.price }}</span>
       </div>
       <div class="card-footer">
         <div class="star-rating mt-n1">

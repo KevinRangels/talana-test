@@ -6,7 +6,7 @@
         <h1 class="mb-2 text-start">Tienda</h1>
         <Breadcrumb />
         <div class="row">
-          <ProductCard v-for="item in [1, 2, 3, 4, 5]" :key="item" />
+          <ProductCard v-for="item in products" :key="item.id" :data="item" />
         </div>
       </div>
     </div>
@@ -31,17 +31,17 @@ export default {
     };
   },
   mounted() {
-    // this.handleGetProducts();
+    this.handleGetProducts();
   },
   methods: {
-    // handleGetProducts() {
-    //   this.$store.dispatch("getProducts");
-    // },
+    handleGetProducts() {
+      this.$store.dispatch("getProducts");
+    },
   },
   computed: {
-    // products() {
-    //   return this.$store.getters.allProducts;
-    // },
+    products() {
+      return this.$store.getters.allProducts;
+    },
     // loadingProducts() {
     //   return this.$store.getters.loadingProducts;
     // },
