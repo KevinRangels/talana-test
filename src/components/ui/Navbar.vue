@@ -2,7 +2,7 @@
   <fragment>
     <ShoppingCart />
     <header class="header">
-      <div class="topbar topbar-dark bg-dark">
+      <div class="topbar topbar-dark bg-dark d-none d-md-block">
         <div class="container d-md-flex align-items-center px-0 px-xl-3">
           <div class="d-none d-md-block text-nowrap me-3">
             <i class="fas fa-phone fs-base text-muted me-1 align-middle"></i

@@ -8,6 +8,7 @@
           type="button"
           data-bs-dismiss="offcanvas"
           aria-label="Close"
+          id="sidebar__btnClose"
         ></button>
       </div>
       <div
@@ -16,12 +17,25 @@
       >
         <div class="widget mb-5">
           <h3 class="widget-title text-start">Buscar producto</h3>
-          <input
-            type="text"
-            class="form-control"
-            v-model="search"
-            placeholder="Nombre del producto"
-          />
+          <div class="d-flex">
+            <div class="col-10 col-md-12">
+              <input
+                type="text"
+                class="form-control"
+                v-model="search"
+                placeholder="Nombre del producto"
+              />
+            </div>
+            <div class="col-2 d-md-none">
+              <button
+                class="btn btn-primary mx-2"
+                @click="btnSearch()"
+                :disabled="!search"
+              >
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </div>
         </div>
         <div class="widget mb-5">
           <h3 class="widget-title text-start">Categorías</h3>
@@ -82,6 +96,10 @@ export default {
       } else {
         this.active = null;
       }
+      document.getElementById("sidebar__btnClose").click();
+    },
+    btnSearch() {
+      document.getElementById("sidebar__btnClose").click();
     },
   },
   computed: {
