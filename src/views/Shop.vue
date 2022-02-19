@@ -23,10 +23,22 @@
             </div>
           </div>
           <div class="row">
-            <ProductCard v-for="item in products" :key="item.id" :data="item" />
+            <ProductCard
+              v-for="item in pageOfItems"
+              :key="item.id"
+              :data="item"
+            />
             <div class="text-center" v-if="products.length === 0">
               <p>No se encontraron productos</p>
             </div>
+          </div>
+          <div class="card-footer pb-0 pt-3">
+            <jw-pagination
+              :items="products"
+              @changePage="onChangePage"
+              :pageSize="3"
+              :labels="customLabels"
+            ></jw-pagination>
           </div>
         </div>
       </div>
@@ -60,6 +72,13 @@ export default {
   data() {
     return {
       filter: "",
+      pageOfItems: [],
+      customLabels: {
+        first: "<<",
+        last: ">>",
+        previous: "<",
+        next: ">",
+      },
     };
   },
   mounted() {
@@ -68,6 +87,10 @@ export default {
   methods: {
     handleGetProducts() {
       this.$store.dispatch("getProducts");
+    },
+    onChangePage(pageOfItems) {
+      // update page of items
+      this.pageOfItems = pageOfItems;
     },
   },
   computed: {

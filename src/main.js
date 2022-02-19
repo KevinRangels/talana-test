@@ -6,11 +6,13 @@ import BootstrapVue from 'bootstrap-vue';
 import Fragment from 'vue-fragment'
 import Notifications from 'vue-notification';
 import Skeleton from 'vue-loading-skeleton';
+import JwPagination from 'jw-vue-pagination';
 
 Vue.use(Skeleton);
 Vue.use(BootstrapVue);
 Vue.use(Fragment.Plugin)
 Vue.use(Notifications)
+Vue.component('jw-pagination', JwPagination);
 
 Vue.config.productionTip = false
 
